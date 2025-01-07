@@ -16,7 +16,6 @@
             font-family: 'Arial', sans-serif;
             font-size: 1.5em;
             text-align: center;
-            transition: background 0.5s;
             overflow: hidden; /* Забезпечує, що анімації не виходять за межі */
         }
 
@@ -43,15 +42,6 @@
                 transform: translateX(-50%) scale(1.2);
             }
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
     </style>
 </head>
 <body>
@@ -59,7 +49,8 @@
     <div id="heart" class="emoji">❤️</div> <!-- Червоне серце -->
 
     <script>
-        const messages = [
+        document.addEventListener("DOMContentLoaded", function () {
+            const messages = [
             "Це маленький сюрприз для тебе. натискай і читай. ",
             "Я хочу, щоб ти знав, наскільки важливий для мене.",
             "Кожен день із тобою дарує мені тепло і радість.",
@@ -105,27 +96,28 @@
             "Можливо, нас чекає новий, ще більш особливий розділ у нашому житті – наша майбутня малеча.",
             "Це не просто виклик, це можливість створити щось прекрасне разом, об’єднати наші серця ще міцніше. І я знаю, що ти будеш найкращим батьком, тому що ти вже найкращий чоловік у моєму житті.",
             "Дякую тобі за всі моменти, які ми прожили разом, і за ті, які ще попереду. Ти зробив мене найщасливішою жінкою на світі, і я мрію провести з тобою все своє життя. Ми впораємося з усім, коханий, адже ми – команда, ми – сім’я, і я завжди буду поруч, щоб підтримати тебе і наше кохання.",
-        ];
+            ];
 
-        let index = 0;
-        const textElement = document.getElementById('text');
-        const heartElement = document.getElementById('heart');
+            let index = 0;
+            const textElement = document.getElementById("text");
+            const heartElement = document.getElementById("heart");
 
-        document.addEventListener('click', () => {
-            if (index < messages.length) {
-                textElement.style.opacity = '0';
-                setTimeout(() => {
-                    textElement.innerText = messages[index];
-                    textElement.style.opacity = '1';
-                }, 500); // Плавний перехід між повідомленнями
-                index++;
-            } else {
-                textElement.style.opacity = '0'; // Ховаємо текст
-                setTimeout(() => {
-                    textElement.innerText = ""; // Видаляємо текст
-                    heartElement.style.display = 'block'; // Показуємо серце
-                }, 500);
-            }
+            document.addEventListener("click", () => {
+                if (index < messages.length) {
+                    textElement.style.opacity = "0";
+                    setTimeout(() => {
+                        textElement.innerText = messages[index];
+                        textElement.style.opacity = "1";
+                    }, 500); // Плавний перехід між повідомленнями
+                    index++;
+                } else {
+                    textElement.style.opacity = "0"; // Ховаємо текст
+                    setTimeout(() => {
+                        textElement.innerText = ""; // Видаляємо текст
+                        heartElement.style.display = "block"; // Показуємо серце
+                    }, 500);
+                }
+            });
         });
     </script>
 </body>
